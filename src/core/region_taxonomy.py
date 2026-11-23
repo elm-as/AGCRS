@@ -12,7 +12,6 @@ AFRICAN_TROPICAL_STAPLES: frozenset[str] = frozenset(
 )
 
 COUNTRY_TO_REGION: dict[str, str] = {
-    # Sub-Saharan Africa (26)
     "Angola": "Sub-Saharan Africa",
     "Botswana": "Sub-Saharan Africa",
     "Burkina Faso": "Sub-Saharan Africa",
@@ -39,7 +38,6 @@ COUNTRY_TO_REGION: dict[str, str] = {
     "Uganda": "Sub-Saharan Africa",
     "Zambia": "Sub-Saharan Africa",
     "Zimbabwe": "Sub-Saharan Africa",
-    # North Africa & Middle East (11)
     "Algeria": "MENA",
     "Bahrain": "MENA",
     "Egypt": "MENA",
@@ -51,7 +49,6 @@ COUNTRY_TO_REGION: dict[str, str] = {
     "Saudi Arabia": "MENA",
     "Tunisia": "MENA",
     "Turkey": "MENA",
-    # Europe & Central Asia (33)
     "Albania": "Europe & Central Asia",
     "Armenia": "Europe & Central Asia",
     "Austria": "Europe & Central Asia",
@@ -85,7 +82,6 @@ COUNTRY_TO_REGION: dict[str, str] = {
     "Tajikistan": "Europe & Central Asia",
     "Ukraine": "Europe & Central Asia",
     "United Kingdom": "Europe & Central Asia",
-    # Asia (10)
     "Bangladesh": "South & East Asia",
     "India": "South & East Asia",
     "Indonesia": "South & East Asia",
@@ -96,7 +92,6 @@ COUNTRY_TO_REGION: dict[str, str] = {
     "Papua New Guinea": "South & East Asia",
     "Sri Lanka": "South & East Asia",
     "Thailand": "South & East Asia",
-    # Latin America & Caribbean (18)
     "Argentina": "Latin America & Caribbean",
     "Bahamas": "Latin America & Caribbean",
     "Brazil": "Latin America & Caribbean",
@@ -115,7 +110,6 @@ COUNTRY_TO_REGION: dict[str, str] = {
     "Peru": "Latin America & Caribbean",
     "Suriname": "Latin America & Caribbean",
     "Uruguay": "Latin America & Caribbean",
-    # North America & Oceania (3)
     "Australia": "North America & Oceania",
     "Canada": "North America & Oceania",
     "New Zealand": "North America & Oceania",

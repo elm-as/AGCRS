@@ -126,7 +126,6 @@ def _predict_loro_fold(
     train_fold, test_fold = fold_frames
     y_tr = train_fold["yield_hg_ha"].to_numpy(dtype=float)
     if model_name == "ridge_fixed_effects":
-        # Unseen countries in LORO have no historical country FE; use crop + region FE.
         design = fit_ridge_fe_transformer(train_fold, include_country_crop_fe=False)
         model = Ridge(alpha=10.0, random_state=hp.random_seed)
         model.fit(transform_ridge_matrix(design, train_fold), y_tr)

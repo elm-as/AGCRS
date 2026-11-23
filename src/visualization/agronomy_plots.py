@@ -96,7 +96,7 @@ def _plot_temporal_and_conformal(
     ax2.legend(frameon=False, loc="upper left", ncol=2, fontsize=8.0)
     _clean_axes(ax2, "x")
 
-    fig.suptitle("AGCRS — Temporal Forecasting Benchmark & Distribution-Free Conformal Uncertainty", fontsize=13, fontweight="bold", y=0.98)
+    fig.suptitle("AGCRS - Temporal Forecasting Benchmark & Distribution-Free Conformal Uncertainty", fontsize=13, fontweight="bold", y=0.98)
     fig.tight_layout(rect=[0, 0, 1, 0.94])
     fig.savefig(output_path, dpi=300)
     plt.close(fig)
@@ -154,7 +154,7 @@ def _plot_climate_shock_stress_test(
     _clean_axes(ax2)
 
     fig.suptitle(
-        "AGCRS — Econometric Climate Sensitivity: Warming (+1°C/+2°C) & Drought (-20%) Shocks",
+        "AGCRS - Econometric Climate Sensitivity: Warming (+1°C/+2°C) & Drought (-20%) Shocks",
         fontsize=13,
         fontweight="bold",
         y=0.98,
@@ -219,7 +219,7 @@ def _plot_shap_and_dedup_audit(
     ax2.grid(True, axis="x", zorder=0)
 
     fig.suptitle(
-        "AGCRS — Explainable Yield Drivers (TreeSHAP) & Multi-Station Panel Deduplication Audit",
+        "AGCRS - Explainable Yield Drivers (TreeSHAP) & Multi-Station Panel Deduplication Audit",
         fontsize=13,
         fontweight="bold",
         y=0.98,
@@ -294,7 +294,7 @@ def _plot_parametric_insurance_risk(
     _clean_axes(ax2)
 
     fig.suptitle(
-        "AGCRS — Parametric Drought/Heatwave Crop Insurance Pricing & Basis Risk Analysis",
+        "AGCRS - Parametric Drought/Heatwave Crop Insurance Pricing & Basis Risk Analysis",
         fontsize=13,
         fontweight="bold",
         y=0.98,

@@ -105,7 +105,6 @@ def _evaluate_segments(
             if len(seg_pre) > 0
             else global_pure
         )
-        # Floor segment pure premium at 0.1% so loss ratios remain finite on ultra-stable crops.
         comm_prem = max(seg_pure, 0.001) * (1.0 + loading)
 
         test_y = seg_test["yield_hg_ha"].to_numpy(dtype=float)

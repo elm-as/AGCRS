@@ -32,8 +32,6 @@ def _finite_sample_conformal_quantile(scores: np.ndarray, alpha: float) -> float
 
 
 def _compute_local_scale(pred: np.ndarray, volatility: np.ndarray) -> np.ndarray:
-    # Combine past-only local volatility with prediction magnitude so intervals adapt
-    # smoothly across low-yield (Sorghum ~15k hg/ha) and high-yield (Potatoes ~200k).
     pred_floor = 0.08 * np.maximum(np.abs(pred), 1.0)
     return np.maximum(np.maximum(volatility, pred_floor), 500.0)
 

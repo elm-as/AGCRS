@@ -110,7 +110,6 @@ def _compute_past_only_yield_lags(
     out["yield_lag_2"] = lag2.fillna(out["yield_lag_1"])
     out["yield_roll3_mean"] = roll3_mean.fillna(crop_fallback)
     out["yield_roll3_std"] = roll3_std.fillna(0.0)
-    # Trailing 5-year past-only local baseline mirrors ARC/USDA APH insurance benchmarks.
     out["local_baseline_yield"] = roll5_baseline.fillna(crop_fallback)
     out["yield_trend_pct"] = (
         (out["yield_lag_1"] - out["yield_lag_2"])

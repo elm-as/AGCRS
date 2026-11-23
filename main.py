@@ -37,6 +37,7 @@ def run_agcrs_study(config: PipelineConfig) -> AgcrsReportPayload:
     """Execute panel deduplication, OOT/LORO modeling, econometrics, conformal & insurance."""
     start_time = time.perf_counter()
 
+    # 1- Importation et deduplication du panel agricole
     print("[1/6] Auditing and deduplicating FAO/World Bank crop yield panel...", flush=True)
     raw_df = load_raw_yield_csv(config.paths.raw_csv_path)
     clean_panel, audit_stats = deduplicate_and_audit_panel(raw_df, config.split)
@@ -45,15 +46,18 @@ def run_agcrs_study(config: PipelineConfig) -> AgcrsReportPayload:
         config.paths.processed_dir / "clean_unique_panel.parquet", index=False
     )
 
+    # 2- Construction des variables passees et decoupage chronologique
     print("[2/6] Building strictly past-only features & chronological splits...", flush=True)
     frames = build_temporal_panel_features(clean_panel, config.split)
 
+    # 3- Entrainement et validation hors-temps et par region
     print("[3/6] Benchmarking Ridge FE, LightGBM & HistGB (OOT + LORO)...", flush=True)
     modeling_out = run_panel_model_benchmarks(frames, config.hyperparams)
     best_bench = next(
         b for b in modeling_out.benchmarks if b.model_name == modeling_out.best_model_name
     )
 
+    # 4- Intervalles conformes, stress-test climatique et assurance parametrique
     print("[4/6] Computing split-conformal intervals, climate econometrics & insurance...", flush=True)
     conf_input = ConformalCalibrationInput(
         cal_actual=frames.calibration_df[frames.target_column].to_numpy(dtype=float),
@@ -82,6 +86,7 @@ def run_agcrs_study(config: PipelineConfig) -> AgcrsReportPayload:
     )
     insurance_summary = evaluate_parametric_insurance(ins_input, config.risk)
 
+    # 5- Export des facteurs SHAP, des graphiques et du dashboard
     print("[5/6] Computing TreeSHAP yield drivers & rendering visual artifacts...", flush=True)
     shap_drivers = compute_tree_shap_drivers(
         modeling_out.lgbm_model,

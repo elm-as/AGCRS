@@ -51,7 +51,7 @@ def serialize_agcrs_payload(payload: AgcrsReportPayload) -> dict[str, object]:
     )
 
     return {
-        "project": "AGCRS — Global Agricultural Yield, Climate Shocks & Parametric Insurance Risk",
+        "project": "AGCRS - Global Agricultural Yield, Climate Shocks & Parametric Insurance Risk",
         "panel_audit": audit_dict,
         "best_model_name": payload.best_model_name,
         "best_model_test_metrics": asdict(best_bench.test_metrics),

@@ -203,7 +203,7 @@ def build_agronomy_dashboard_html(
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>AGCRS — Global Agricultural Yield, Climate Shocks &amp; Parametric Insurance</title>
+  <title>AGCRS - Global Agricultural Yield, Climate Shocks &amp; Parametric Insurance</title>
   <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
   <style>{_DASHBOARD_CSS}</style>
 </head>
@@ -211,7 +211,7 @@ def build_agronomy_dashboard_html(
 <div class="container">
   <header class="header">
     <div>
-      <h1>AGCRS — Global Agricultural Yield, Climate Shocks &amp; Parametric Insurance Risk</h1>
+      <h1>AGCRS - Global Agricultural Yield, Climate Shocks &amp; Parametric Insurance Risk</h1>
       <p>FAO/World Bank 101-Country Staple Panel (1990-2013) | Strict Out-of-Time Split, Split-Conformal Intervals &amp; Climate Econometrics</p>
     </div>
     <div class="meta-strip">
