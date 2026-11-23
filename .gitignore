@@ -1,0 +1,15 @@
+﻿__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.ipynb_checkpoints/
+.venv/
+venv/
+.env
+kaggle.json
+data/raw/*.csv
+data/raw/*.zip
+data/raw/*.parquet
+data/processed/*
+*.log
+data/

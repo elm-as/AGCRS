@@ -1,0 +1,134 @@
+"""Deterministic FAO macro-region taxonomy for all 101 countries in yield_df.csv."""
+
+AFRICAN_TROPICAL_STAPLES: frozenset[str] = frozenset(
+    {
+        "Maize",
+        "Cassava",
+        "Sorghum",
+        "Yams",
+        "Rice, paddy",
+        "Plantains and others",
+    }
+)
+
+COUNTRY_TO_REGION: dict[str, str] = {
+    # Sub-Saharan Africa (26)
+    "Angola": "Sub-Saharan Africa",
+    "Botswana": "Sub-Saharan Africa",
+    "Burkina Faso": "Sub-Saharan Africa",
+    "Burundi": "Sub-Saharan Africa",
+    "Cameroon": "Sub-Saharan Africa",
+    "Central African Republic": "Sub-Saharan Africa",
+    "Eritrea": "Sub-Saharan Africa",
+    "Ghana": "Sub-Saharan Africa",
+    "Guinea": "Sub-Saharan Africa",
+    "Kenya": "Sub-Saharan Africa",
+    "Lesotho": "Sub-Saharan Africa",
+    "Madagascar": "Sub-Saharan Africa",
+    "Malawi": "Sub-Saharan Africa",
+    "Mali": "Sub-Saharan Africa",
+    "Mauritania": "Sub-Saharan Africa",
+    "Mauritius": "Sub-Saharan Africa",
+    "Mozambique": "Sub-Saharan Africa",
+    "Namibia": "Sub-Saharan Africa",
+    "Niger": "Sub-Saharan Africa",
+    "Rwanda": "Sub-Saharan Africa",
+    "Senegal": "Sub-Saharan Africa",
+    "South Africa": "Sub-Saharan Africa",
+    "Sudan": "Sub-Saharan Africa",
+    "Uganda": "Sub-Saharan Africa",
+    "Zambia": "Sub-Saharan Africa",
+    "Zimbabwe": "Sub-Saharan Africa",
+    # North Africa & Middle East (11)
+    "Algeria": "MENA",
+    "Bahrain": "MENA",
+    "Egypt": "MENA",
+    "Iraq": "MENA",
+    "Lebanon": "MENA",
+    "Libya": "MENA",
+    "Morocco": "MENA",
+    "Qatar": "MENA",
+    "Saudi Arabia": "MENA",
+    "Tunisia": "MENA",
+    "Turkey": "MENA",
+    # Europe & Central Asia (33)
+    "Albania": "Europe & Central Asia",
+    "Armenia": "Europe & Central Asia",
+    "Austria": "Europe & Central Asia",
+    "Azerbaijan": "Europe & Central Asia",
+    "Belarus": "Europe & Central Asia",
+    "Belgium": "Europe & Central Asia",
+    "Bulgaria": "Europe & Central Asia",
+    "Croatia": "Europe & Central Asia",
+    "Denmark": "Europe & Central Asia",
+    "Estonia": "Europe & Central Asia",
+    "Finland": "Europe & Central Asia",
+    "France": "Europe & Central Asia",
+    "Germany": "Europe & Central Asia",
+    "Greece": "Europe & Central Asia",
+    "Hungary": "Europe & Central Asia",
+    "Ireland": "Europe & Central Asia",
+    "Italy": "Europe & Central Asia",
+    "Kazakhstan": "Europe & Central Asia",
+    "Latvia": "Europe & Central Asia",
+    "Lithuania": "Europe & Central Asia",
+    "Montenegro": "Europe & Central Asia",
+    "Netherlands": "Europe & Central Asia",
+    "Norway": "Europe & Central Asia",
+    "Poland": "Europe & Central Asia",
+    "Portugal": "Europe & Central Asia",
+    "Romania": "Europe & Central Asia",
+    "Slovenia": "Europe & Central Asia",
+    "Spain": "Europe & Central Asia",
+    "Sweden": "Europe & Central Asia",
+    "Switzerland": "Europe & Central Asia",
+    "Tajikistan": "Europe & Central Asia",
+    "Ukraine": "Europe & Central Asia",
+    "United Kingdom": "Europe & Central Asia",
+    # Asia (10)
+    "Bangladesh": "South & East Asia",
+    "India": "South & East Asia",
+    "Indonesia": "South & East Asia",
+    "Japan": "South & East Asia",
+    "Malaysia": "South & East Asia",
+    "Nepal": "South & East Asia",
+    "Pakistan": "South & East Asia",
+    "Papua New Guinea": "South & East Asia",
+    "Sri Lanka": "South & East Asia",
+    "Thailand": "South & East Asia",
+    # Latin America & Caribbean (18)
+    "Argentina": "Latin America & Caribbean",
+    "Bahamas": "Latin America & Caribbean",
+    "Brazil": "Latin America & Caribbean",
+    "Chile": "Latin America & Caribbean",
+    "Colombia": "Latin America & Caribbean",
+    "Dominican Republic": "Latin America & Caribbean",
+    "Ecuador": "Latin America & Caribbean",
+    "El Salvador": "Latin America & Caribbean",
+    "Guatemala": "Latin America & Caribbean",
+    "Guyana": "Latin America & Caribbean",
+    "Haiti": "Latin America & Caribbean",
+    "Honduras": "Latin America & Caribbean",
+    "Jamaica": "Latin America & Caribbean",
+    "Mexico": "Latin America & Caribbean",
+    "Nicaragua": "Latin America & Caribbean",
+    "Peru": "Latin America & Caribbean",
+    "Suriname": "Latin America & Caribbean",
+    "Uruguay": "Latin America & Caribbean",
+    # North America & Oceania (3)
+    "Australia": "North America & Oceania",
+    "Canada": "North America & Oceania",
+    "New Zealand": "North America & Oceania",
+}
+
+
+def resolve_country_region(area_name: str) -> str:
+    """Map an FAO country/area name to its deterministic macro-region."""
+    if area_name not in COUNTRY_TO_REGION:
+        raise KeyError(f"Unmapped FAO country/area in taxonomy: {area_name!r}")
+    return COUNTRY_TO_REGION[area_name]
+
+
+def is_african_tropical_staple(crop_name: str) -> bool:
+    """Return True if `crop_name` belongs to the African & tropical staple cohort."""
+    return crop_name in AFRICAN_TROPICAL_STAPLES
